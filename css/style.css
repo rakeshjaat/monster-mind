@@ -11673,7 +11673,7 @@ button::-moz-focus-inner {
 /* Main image in popup */
 img.mfp-img {
   width: auto;
-  min-width: 100vw;
+  /* min-width: 100vw; */
   max-width: 100%;
   height: auto;
   display: block;
