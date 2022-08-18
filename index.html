@@ -1051,13 +1051,15 @@ Author: hypermente
                 <!-- Begin Mailchimp Signup Form -->
 
                 <div>
-                  <input required type="text" placeholder="Name" id="name-contact">
-                  <input required type="text" placeholder="Email" id="email-contact">
-                  <span class="d-none" id="email-valid-error" style="display: none;">Email is not valid!</span>
-                  <textarea required type="text" placeholder="Message" id="message-contact" cols="30"
-                    rows="10"></textarea>
-                  <span class="d-none" id="error-messsage">All fields are required! Please fill all fields.</span>
-                  <button id="send-message-btn">Send message</button>
+                  <input class="custom_input_css" required type="text" placeholder="NAME" id="name-contact">
+                  <input class="custom_input_css" required type="text" placeholder="EMAIL" id="email-contact">
+                  <span class="d-none" id="email-valid-error" style="display: none; color: red;">Email is not valid!</span>
+                  <textarea class="custom_input_css" required type="text" placeholder="MESSAGE" id="message-contact" cols="30"
+                    rows="3"></textarea>
+                  <span class="d-none" style="color:red;" id="error-messsage">All fields are required! Please fill all fields.</span>
+                 <div class="text-end text_center">
+                   <button id="send-message-btn" class="gray_btn">SEND MESSAGE</button>
+                 </div>
                 </div>
 
               </div>
@@ -1377,7 +1379,7 @@ Author: hypermente
           // sendmessagebtn.innerHTML = "Sending...";
           // handleSendMessage();
         } else {
-          errormesssage.classList.remove("d-none")
+            errormesssage.style.display = "block";
         }
       })
 
@@ -1400,7 +1402,7 @@ Author: hypermente
               background: "linear-gradient(to right, #00b09b, #96c93d)",
             }
           }).showToast();
-          errormesssage.classList.add("d-none")
+          errormesssage.style.display = "none";
           sendmessagebtn.innerHTML = "Thank you!";
           name.value = "";
           email.value = "";
