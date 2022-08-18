@@ -1053,7 +1053,9 @@ Author: hypermente
                 <div>
                   <input required type="text" placeholder="Name" id="name-contact">
                   <input required type="text" placeholder="Email" id="email-contact">
-                  <input required type="text" placeholder="Message" id="message-contact">
+                  <span class="d-none" id="email-valid-error" style="display: none;">Email is not valid!</span>
+                  <textarea required type="text" placeholder="Message" id="message-contact" cols="30"
+                    rows="10"></textarea>
                   <span class="d-none" id="error-messsage">All fields are required! Please fill all fields.</span>
                   <button id="send-message-btn">Send message</button>
                 </div>
@@ -1346,19 +1348,34 @@ Author: hypermente
     <script>
       emailjs.init('user_T75V2X2HACKVbeaxSxZRL');
 
+      function isValidEmail(string) {
+        // The regular expression used by [type="email"]
+        var regex =
+          /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+        // Test the string against the regular expression
+        return regex.test(string);
+      }
 
       const sendmessagebtn = document.getElementById('send-message-btn');
       const name = document.getElementById('name-contact');
       const email = document.getElementById('email-contact');
       const message = document.getElementById('message-contact');
       const errormesssage = document.getElementById('error-messsage');
+      const emailvaliderror = document.getElementById('email-valid-error');
 
       sendmessagebtn.addEventListener("click", function () {
-        console.log(name.value, email.value, message.value);
 
         if (name.value.length > 0 && email.value.length > 0 && message.value.length > 0) {
-          sendmessagebtn.innerHTML = "Sending...";
-          handleSendMessage();
+
+          if (isValidEmail(email.value)) {
+            // It's a valid email address...
+            console.log("valid email");
+          } else {
+            emailvaliderror.style.display = "block";
+          }
+          // sendmessagebtn.innerHTML = "Sending...";
+          // handleSendMessage();
         } else {
           errormesssage.classList.remove("d-none")
         }
