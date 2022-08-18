@@ -1064,7 +1064,6 @@ Author: hypermente
 
               </div>
             </div>
-
             <div class="alert alert-success hidden animated fadeIn" id="contactSuccess">
               <strong>Success!</strong> Your message has been sent to us.
             </div>
@@ -1074,8 +1073,6 @@ Author: hypermente
             </div>
           </div>
         </div>
-
-
 
         <!-- FOOTER 2 -->
         <footer id="footer2" class="page-section pt-80 pb-50">
@@ -1367,17 +1364,18 @@ Author: hypermente
       const emailvaliderror = document.getElementById('email-valid-error');
 
       sendmessagebtn.addEventListener("click", function () {
-
+console.log("click")
         if (name.value.length > 0 && email.value.length > 0 && message.value.length > 0) {
 
           if (isValidEmail(email.value)) {
             // It's a valid email address...
             console.log("valid email");
+             sendmessagebtn.innerHTML = "Sending...";
+          handleSendMessage();
           } else {
             emailvaliderror.style.display = "block";
           }
-          // sendmessagebtn.innerHTML = "Sending...";
-          // handleSendMessage();
+         
         } else {
             errormesssage.style.display = "block";
         }
@@ -1403,6 +1401,7 @@ Author: hypermente
             }
           }).showToast();
           errormesssage.style.display = "none";
+          emailvaliderror.style.display = "none";
           sendmessagebtn.innerHTML = "Thank you!";
           name.value = "";
           email.value = "";
