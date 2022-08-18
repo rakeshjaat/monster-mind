@@ -42,13 +42,13 @@ Author: hypermente
 
   <!-- ICONS ELEGANT FONT & FONT AWESOME & LINEA ICONS  -->
   <link rel="stylesheet" href="css/icons-fonts.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
   <!--  CSS THEME -->
   <link rel="stylesheet" href="css/style.css">
 
   <!-- ANIMATE -->
   <link rel='stylesheet' href="css/animate.min.css">
-  <link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-230665288-1"></script>
@@ -1044,76 +1044,23 @@ Author: hypermente
                 <h2 class="section-title"><span class="bold">CONTACT</span></h2>
               </div>
             </div>
-            <form id="contact-form" action="php/contact-form.php" method="POST">
 
-              <div class="row">
+            <div class="row">
 
-                <div class="col-md-6">
-                  <!-- Begin Mailchimp Signup Form -->
+              <div class="col-md-6">
+                <!-- Begin Mailchimp Signup Form -->
 
-                  <style type="text/css">
-                    #mc_embed_signup {
-                      background: #fff;
-                      clear: left;
-                      font: 14px Helvetica, Arial, sans-serif;
-                      width: 600px;
-                    }
-                  </style>
-                  <div id="mc_embed_signup " class="w-xs-100">
-                    <form
-                      action="https://monstermindstudios.us11.list-manage.com/subscribe/post?u=6791f5129b9881ef2680ab53f&amp;id=72e8a4b575&amp;f_id=008991e0f0"
-                      method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
-                      target="_blank" novalidate>
-                      <div id="mc_embed_signup_scroll">
-
-                        <div class="mc-field-group">
-                          <label class="lable_input" for="mce-NAME">
-                          </label>
-                          <input type="text" value="" placeholder="NAME" name="NAME" class="required custom_input_css"
-                            id="mce-NAME">
-                          <span id="mce-NAME-HELPERTEXT" class="helper_text"></span>
-                        </div>
-                        <div class="mc-field-group">
-                          <label class="lable_input" for="mce-EMAIL">
-
-                          </label>
-                          <input type="email" value="" name="EMAIL" class="required email custom_input_css"
-                            placeholder="EMAIL" id="mce-EMAIL">
-                          <span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
-                        </div>
-
-                        <div class="mc-field-group">
-                          <label class="lable_input" for="mce-MESSAGE">
-                          </label>
-                          <span class="custom_input_css d-inline-block">
-                            <input type="text" value="" placeholder="MESSAGE" name="MESSAGE"
-                              class="required border_0 text_indent" id="mce-MESSAGE">
-                            <div style="height: 50px;"></div>
-                          </span>
-                          <span id="mce-MESSAGE-HELPERTEXT" class="helper_text"></span>
-                        </div>
-                        <div id="mce-responses" class="clear foot">
-                          <div class="response" id="mce-error-response" style="display:none"></div>
-                          <div class="response" id="mce-success-response" style="display:none"></div>
-                        </div>
-                        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                          <input type="text" name="b_6791f5129b9881ef2680ab53f_72e8a4b575" tabindex="-1" value="">
-                        </div>
-                        <div class="optionalParent">
-                          <div class=" clear foot gray_btn" style="display: block;">
-                            <input type="submit" value="SEND MESSAGE" name="subscribe" id="mc-embedded-subscribe"
-                              data-loading-text="Loading...">
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <!--End mc_embed_signup-->
+                <div>
+                  <input required type="text" placeholder="Name" id="name-contact">
+                  <input required type="text" placeholder="Email" id="email-contact">
+                  <input required type="text" placeholder="Message" id="message-contact">
+                  <span class="d-none" id="error-messsage">All fields are required! Please fill all fields.</span>
+                  <button id="send-message-btn">Send message</button>
                 </div>
-              </div>
 
-            </form>
+              </div>
+            </div>
+
             <div class="alert alert-success hidden animated fadeIn" id="contactSuccess">
               <strong>Success!</strong> Your message has been sent to us.
             </div>
@@ -1203,21 +1150,7 @@ Author: hypermente
 
     <!-- JS begin -->
 
-    <!-- jQuery  -->
-    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
-    <script type='text/javascript'>
-      (function ($) {
-        window.fnames = new Array();
-        window.ftypes = new Array();
-        fnames[0] = 'EMAIL';
-        ftypes[0] = 'email';
-        fnames[1] = 'NAME';
-        ftypes[1] = 'text';
-        fnames[6] = 'MESSAGE';
-        ftypes[6] = 'text';
-      }(jQuery));
-      var $mcj = jQuery.noConflict(true);
-    </script>
+
 
     <script src="js/jquery-1.11.2.min.js"></script>
 
@@ -1243,12 +1176,14 @@ Author: hypermente
 
     <!-- MAIN SCRIPT -->
     <script src="js/main.js"></script>
+    <!-- TOASTIFY  -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
     <!-- REVOSLIDER SCRIPTS  -->
     <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
     <script src="rs-plugin/js/jquery.themepunch.tools.min.js"></script>
     <script src="rs-plugin/js/jquery.themepunch.revolution-parallax.min.js"></script>
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <!-- SLIDER REVOLUTION INIT  -->
     <script>
       jQuery(document).ready(function () {
@@ -1408,6 +1343,67 @@ Author: hypermente
       }); //ready
     </script>
 
+    <script>
+      emailjs.init('user_T75V2X2HACKVbeaxSxZRL');
+
+
+      const sendmessagebtn = document.getElementById('send-message-btn');
+      const name = document.getElementById('name-contact');
+      const email = document.getElementById('email-contact');
+      const message = document.getElementById('message-contact');
+      const errormesssage = document.getElementById('error-messsage');
+
+      sendmessagebtn.addEventListener("click", function () {
+        console.log(name.value, email.value, message.value);
+
+        if (name.value.length > 0 && email.value.length > 0 && message.value.length > 0) {
+          sendmessagebtn.innerHTML = "Sending...";
+          handleSendMessage();
+        } else {
+          errormesssage.classList.remove("d-none")
+        }
+      })
+
+      function handleSendMessage() {
+        const emaildata = {
+          name: name.value,
+          email: email.value,
+          message: message.value
+        }
+
+        emailjs.send('service_eohwpfk', 'template_dotl32e', emaildata).then(() => {
+          console.log("Success");
+          // IT SHOW ON SUCCESS 
+          Toastify({
+            text: "Thank you for contacting us",
+            className: "info",
+            gravity: "bottom", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            style: {
+              background: "linear-gradient(to right, #00b09b, #96c93d)",
+            }
+          }).showToast();
+          errormesssage.classList.add("d-none")
+          sendmessagebtn.innerHTML = "Thank you!";
+          name.value = "";
+          email.value = "";
+          message.value = "";
+        }).catch((err) => {
+          console.log(err)
+          // IT SHOW ON ERROR 
+          Toastify({
+            text: "Something went wrong. Please try again!",
+            className: "info",
+            gravity: "bottom", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            style: {
+              background: "linear-gradient(to right, red, #96c93d)",
+            }
+          }).showToast();
+        })
+
+      }
+    </script>
     <!-- JS end -->
 
 </body>

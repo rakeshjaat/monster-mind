@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="col-md-6">
+        <div style="display: flex; flex-direction : column; ">
+            <label for=" name">NAME</label>
+            <input required id="name" type="text" placeholder="Name">
+        </div>
+        <div style="display: flex; flex-direction : column;   ">
+            <label for=" email">EMAIL</label>
+            <input required id="email" type="text" placeholder="Name">
+        </div>
+        <div style="display: flex; flex-direction : column;  ">
+            <label for=" message">MESSAGE</label>
+            <input required id="message" type="text" placeholder="Name">
+        </div>
+        <button id="send-message" type="submit">Send Message</button>
+    </div>
+    <script>
+        const getSendMessageBtn = document.getElementById("send-message");
+        const name = document.getElementById("name");
+        const email = document.getElementById("email");
+        const message = document.getElementById("message");
+
+
+        getSendMessageBtn.addEventListener("click", async () => {
+            console.log(name.value)
+            console.log(email.value)
+            console.log(message.value)
+            if (name.value !== "" && email.value !== "" && message.value !== "") {
+                await handleSendMessage(name.value, email.value, message.value)
+            }
+        })
+
+
+        async function handleSendMessage(name, email, message) {
+            const response = await fetch(
+                "https://monstermindstudios.us11.list-manage.com/subscribe/post?u=6791f5129b9881ef2680ab53f&amp;id=72e8a4b575&amp;f_id=008991e0f0", {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        "Access-Control-Allow-Origin": "*",
+                        "cors": "true"
+                    },
+                    body: `{
+             "EMAIL": ${email},
+             "NAME": ${name},
+             "MESSAGE": ${message},
+             }`,
+                });
+
+            response.json().then(data => {
+                console.log(data, "data");
+            });
+        }
+    </script>
+</body>
+
+</html>
